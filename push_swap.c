@@ -5,27 +5,19 @@
 // We can declare many times a function but only definite once -> write code in it
 // Initiate pointers and struct to NULL to prevent SEG_FAULT
 
-
-
 int main(int ac, char **av)
 {
 	// Check if numbers came in av[1] or in various arguments
-	// if (ac == 1 || (ac == 2 && !av[1][0])) -> first check
-	if (ac == 2)
-	{
+	//t_stack	*a;
+	//t_stack	*b;
 
-	}
-	else if (ac > 2)
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
 	{
-		// Check if all arguments are numbers
-		printf("There are more than 2 arguments\n");
-
-		// Check duplicates
-		
+		av = push_swap_split(av[1], ' ');
+		printf("%s\n", av[1]);
 	}
-	else
-	{
-		printf("%s\n", av[0]);
-	}
+	free_array(av);
 	return (0);
 }

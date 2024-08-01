@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 23:34:41 by nuno              #+#    #+#             */
-/*   Updated: 2024/08/01 23:39:15 by nuno             ###   ########.fr       */
+/*   Updated: 2024/08/02 00:16:58 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ static char	*get_next_word(char *str, char separator)
 		++cursor;
 	while (str[cursor + len] != separator && str[cursor + len])
 		++len;
-	string_holder = (char)malloc(sizeof(char) * (len + 1));
+	string_holder = (char *)malloc(sizeof(char) * (len + 1));
 	if (string_holder == NULL)
 		return (NULL);
-	while (str[cursor] != str && str[cursor])
+	while (str[cursor] != separator && str[cursor])
 		string_holder[i++] = str[cursor++];
 	string_holder[i++] = '\0';
 	return (string_holder);
 }
 
-char	**split(char *av, char separator)
+char	**push_swap_split(char *av, char separator)
 {
 	int		word_count;
 	char	**array;
@@ -68,26 +68,11 @@ char	**split(char *av, char separator)
 	array = (char **)malloc(sizeof(char *) * (word_count + 2));
 	if (array == NULL)
 		return (NULL);
-	array[0] = (char)malloc(sizeof(char));
+	array[0] = ft_strdup("");
 	if (array[0] == NULL)
 		return (NULL);
-	array[0] = '\0';
 	while (word_count-- > 0)
 		array[i++] = get_next_word(av, separator);
-	array[i] = '\0';
+	array[i] = NULL;
 	return (array);
-}
-
-int	main(int ac, char **av)
-{
-	char **array;
-	int i = 0;
-	
-	array = split(av[1], ' ');
-	while(array[i])
-	{
-		printf("%s\n", array[i]);
-		i++;
-	}
-	free_array(array);
 }

@@ -23,7 +23,7 @@ typedef struct stack_node
 	struct stack_node *target;
 	struct stack_node *prev;
 	struct stack_node *next;
-}			Node;
+}			t_stack;
 
 // checker.c
 void	check_if_arguments_are_numbers(int ac, char **av);
@@ -33,10 +33,9 @@ int		is_digit(char *av);
 void free_array(char **av);
 
 // split.c
-char	**split(char *av, char separator);
-static char	*get_next_word(char *str, char separator);
-int	count_words(char *str, char separator);
+char	**push_swap_split(char *av, char separator);
+int		count_words(char *str, char separator);
 
-
+// push_swap.c
 
 #endif
