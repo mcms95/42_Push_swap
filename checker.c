@@ -22,20 +22,34 @@ int is_digit(char *av)
 	return (1);
 }
 
-// Check if array is all numbers
-void	check_if_arguments_are_numbers(int ac, char **av)
+int	check_duplicates(t_stack *head, int number)
 {
-	int	i;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (!is_digit(av[i]))
-		{
-			printf("Error, not all numbers are digits\n");
-			exit(0);
-		}
-		i++;
+	t_stack *current;
+	
+	if (head == NULL)
+		return (1);
+	current = head;
+	while (current != NULL)
+	{	
+		if (current->value == number)
+			return (0);
+		current = current->next;
 	}
-	printf("All arguments are numbers!\n");
+	return (1);
+}
+
+int	check_if_stack_is_sorted(t_stack *head)
+{
+	t_stack *current;
+
+	if (head == NULL || head->next == NULL)
+		return 1; 
+	current = head;
+	while (current->next != NULL)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

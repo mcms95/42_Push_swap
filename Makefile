@@ -1,6 +1,7 @@
 NAME		= push_swap
 
-SRCS		= push_swap.c	checker.c	free.c	split.c
+SRCS		= push_swap.c	checker.c	free.c	split.c	utils.c	action_swap.c	action_rotate.c \
+action_rotate__reverse.c action_push.c
 
 OBJS		= $(SRCS:.c=.o)
 
