@@ -13,14 +13,13 @@
 typedef struct stack_node
 {
 	int		value;
-	int		current_position;
-	int		final_index;
-	int		push_price;
-	bool	above_mediam;
-	bool	cheapest;
+	int		index;
+	int		push_cost;
+	bool	above_median;
+	bool	is_cheapest_move;
 
 	// Pointers
-	struct stack_node *target;
+	struct stack_node *target_node;
 	struct stack_node *prev;
 	struct stack_node *next;
 }			t_stack;
@@ -48,6 +47,12 @@ void	append_node(t_stack **head, int number);
 void	initialize_node_variables(t_stack *new_node);
 void	print_stack(t_stack *head);
 
+// stack_get.c
+int		get_stack_len(t_stack *stack);
+t_stack	*get_stack_highest_value_node(t_stack *stack);
+t_stack	*get_stack_lowest_value_node(t_stack *stack);
+
+
 // action_swap.c
 void	swap(t_stack **head);
 void	sa(t_stack **a);
@@ -71,5 +76,14 @@ void	push(t_stack **dest, t_stack **src);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **b, t_stack **a);
 
+// sort_3.c
+void	sort_3(t_stack **stack);
+
+// initiate_nodes_for_swap.c
+void	initiate_nodes(t_stack *a, t_stack *b);
+void	set_current_index_and_check_median(t_stack *stack);
+void	set_target_node(t_stack *a, t_stack *b);
+void	set_push_cost(t_stack *a, t_stack *b);
+void	set_cheapest_node(t_stack *b);
 
 #endif

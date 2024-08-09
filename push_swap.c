@@ -4,7 +4,6 @@
 // exit(1) -> error, exit(0)-> success
 // We can declare many times a function but only definite once -> write code in it
 // Initiate pointers and struct to NULL to prevent SEG_FAULT
-// TODO create function to free linked list and if needed the array
 
 void initiate_stack(t_stack **a, char **av, bool ac_is_2_flag)
 {
@@ -80,17 +79,12 @@ int main(int ac, char **av)
 	// Stack b
 	ft_printf("Original stack b ..\n");
 	print_stack(b);
-
-	// TODO PUSH
-	ft_printf("\nPushing first value of a to b:..\n");
-		// Stack a
-	ft_printf("After push stack a ..\n");
-	print_stack(a);
-
-	// Stack b
-	ft_printf("After push stack b ..\n");
-	print_stack(b);
-
+	if (get_stack_len(a) == 3)
+	{
+		sort_3(&a);
+		ft_printf("Changed stack a ..\n");
+		print_stack(a);
+	}
 
 	printf("\nFreeing stack...\n");
 	free_stack(&a);

@@ -27,12 +27,11 @@ long	ft_atol(char *str)
 
 void	initialize_node_variables(t_stack *new_node)
 {
-	new_node->current_position = 0;
-	new_node->final_index = 0;
-	new_node->push_price = 0;
-	new_node->above_mediam = false;
-	new_node->cheapest = false;
-	new_node->target = NULL;
+	new_node->index = 0;
+	new_node->push_cost = 0;
+	new_node->above_median = false;
+	new_node->is_cheapest_move = false;
+	new_node->target_node = NULL;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 }
