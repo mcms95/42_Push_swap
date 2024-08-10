@@ -51,6 +51,7 @@ void	print_stack(t_stack *head);
 int		get_stack_len(t_stack *stack);
 t_stack	*get_stack_highest_value_node(t_stack *stack);
 t_stack	*get_stack_lowest_value_node(t_stack *stack);
+t_stack	*get_chepeast_node(t_stack *stack);
 
 
 // action_swap.c
