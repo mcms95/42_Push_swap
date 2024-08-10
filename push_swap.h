@@ -6,7 +6,7 @@
 /*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 14:28:43 by nucardos          #+#    #+#             */
-/*   Updated: 2024/08/10 14:32:16 by nucardos         ###   ########.fr       */
+/*   Updated: 2024/08/10 16:01:24 by nucardos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct stack_node
 	struct stack_node	*prev;
 	struct stack_node	*next;
 }	t_stack;
+
+// main.c 
+void	main_sort(t_stack **a, t_stack **b);
 
 // split.c
 char	**push_swap_split(char *av, char separator);

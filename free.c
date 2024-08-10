@@ -6,7 +6,7 @@
 /*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 14:04:24 by nucardos          #+#    #+#             */
-/*   Updated: 2024/08/10 14:11:49 by nucardos         ###   ########.fr       */
+/*   Updated: 2024/08/10 15:31:32 by nucardos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	free_all(t_stack **stack, char **av, bool ac_is_2_flag)
 	free_stack(stack);
 	if (ac_is_2_flag)
 		free_array(av);
-	ft_printf("Error.. Exiting\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }
