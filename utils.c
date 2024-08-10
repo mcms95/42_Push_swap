@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:04:19 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:27:22 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 long	ft_atol(char *str)
 {
@@ -13,7 +25,7 @@ long	ft_atol(char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+' )
 	{
-		if (str[i] == '-')  
+		if (str[i] == '-')
 			flag = -1;
 		i++;
 	}
@@ -42,7 +54,7 @@ void	print_stack(t_stack *head)
 
 	current = head;
 	if (head == NULL)
-		return;
+		return ;
 	while (current != NULL)
 	{
 		ft_printf("Value is: %d\n", current->value);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:28:43 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:32:16 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
@@ -12,17 +24,17 @@
 
 typedef struct stack_node
 {
-	int		value;
-	int		index;
-	int		push_cost;
-	bool	above_median;
-	bool	is_cheapest_move;
+	int					value;
+	int					index;
+	int					push_cost;
+	bool				above_median;
+	bool				is_cheapest_move;
 
 	// Pointers
-	struct stack_node *target_node;
-	struct stack_node *prev;
-	struct stack_node *next;
-}			t_stack;
+	struct stack_node	*target_node;
+	struct stack_node	*prev;
+	struct stack_node	*next;
+}	t_stack;
 
 // split.c
 char	**push_swap_split(char *av, char separator);
@@ -68,14 +80,16 @@ void	rotate(t_stack **head);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
-void	rotate_both_stacks(t_stack **main_stack, t_stack **target_stack, t_stack *cheapest_node);
+void	rotate_both_stacks(t_stack **main_stack,
+			t_stack **target_stack, t_stack *cheapest_node);
 
 // action_rotate_reverse.c
 void	rotate_reverse(t_stack **head);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
-void	reverse_rotate_both_stacks(t_stack **main_stack, t_stack **target_stack, t_stack *cheapest_node);
+void	reverse_rotate_both_stacks(t_stack **main_stack,
+			t_stack **target_stack, t_stack *cheapest_node);
 
 // action_push.c
 void	push(t_stack **dest, t_stack **src);
@@ -108,6 +122,5 @@ void	move_a_to_b(t_stack **a, t_stack **b);
 void	finish_a_rotation(t_stack **a, t_stack *cheapest_node);
 void	move_b_to_a(t_stack **a, t_stack **b);
 void	finish_b_rotation(t_stack **b, t_stack *target_node);
-
 
 #endif

@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:04:16 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:26:33 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	initiate_stack(t_stack **a, char **av, bool ac_is_2_flag)
 {
@@ -18,7 +30,7 @@ void	initiate_stack(t_stack **a, char **av, bool ac_is_2_flag)
 		append_node(a, (int)number);
 		i++;
 	}
-	if ( ac_is_2_flag == true)
+	if (ac_is_2_flag == true)
 	{
 		free_array(av);
 	}
@@ -28,9 +40,10 @@ void	append_node(t_stack **head, int number)
 {
 	t_stack	*new_node;
 	t_stack	*current;
+
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
-		return;
+		return ;
 	initialize_node_variables(new_node);
 	new_node->value = number;
 	if (*head == NULL)

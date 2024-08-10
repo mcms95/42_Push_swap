@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucardos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:36:58 by nucardos          #+#    #+#             */
-/*   Updated: 2023/07/11 16:37:00 by nucardos         ###   ########.fr       */
+/*   Updated: 2024/08/10 14:29:45 by nucardos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_printhex(unsigned int num, char flag)
 		else
 			size += write(1, &upper[num], 1);
 	}
-	return (size); 
+	return (size);
 }
 
 /*int main()

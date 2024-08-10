@@ -1,12 +1,24 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:03:48 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:11:14 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int is_digit(char *av)
+#include "push_swap.h"
+
+int	is_digit(char *av)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (av[i] == ' ' || av[i] == '\t')
-			i++;
+		i++;
 	if (av[i] == '-' || av[i] == '+')
 		i++;
 	if (av[i] == '\0')
@@ -22,13 +34,13 @@ int is_digit(char *av)
 
 int	check_duplicates(t_stack *head, int number)
 {
-	t_stack *current;
-	
+	t_stack	*current;
+
 	if (head == NULL)
 		return (1);
 	current = head;
 	while (current != NULL)
-	{	
+	{
 		if (current->value == number)
 			return (0);
 		current = current->next;
@@ -38,10 +50,10 @@ int	check_duplicates(t_stack *head, int number)
 
 int	check_if_stack_is_sorted(t_stack *head)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	if (head == NULL || head->next == NULL)
-		return 1; 
+		return (1);
 	current = head;
 	while (current->next != NULL)
 	{

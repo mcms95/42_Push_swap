@@ -15,7 +15,7 @@ LIBFTPRINTF	= $(PRINTF_DIR)/libftprintf.a
 RM		= rm -f
 
 CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror 
 
 .c.o:
 			@$(CC) $(CFLAGS) -c $< -o $@

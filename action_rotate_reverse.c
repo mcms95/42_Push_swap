@@ -1,12 +1,24 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   action_rotate_reverse.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:02:48 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:07:01 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void rotate_reverse(t_stack **head)
+#include "push_swap.h"
+
+void	rotate_reverse(t_stack **head)
 {
-	t_stack *first_node;
-	t_stack *current;
+	t_stack	*first_node;
+	t_stack	*current;
 
 	if (*head == NULL || (*head)->next == NULL)
-		return;
+		return ;
 	first_node = (*head);
 	current = (*head);
 	while (current->next->next != NULL)
@@ -38,9 +50,11 @@ void	rrr(t_stack **a, t_stack **b)
 	ft_printf("rrr\n");
 }
 
-void	reverse_rotate_both_stacks(t_stack **main_stack, t_stack **target_stack, t_stack *cheapest_node)
+void	reverse_rotate_both_stacks(t_stack **main_stack,
+	t_stack **target_stack, t_stack *cheapest_node)
 {
-	while(*target_stack != cheapest_node->target_node && *main_stack != cheapest_node)
+	while (*target_stack != cheapest_node->target_node
+		&& *main_stack != cheapest_node)
 		rrr(main_stack, target_stack);
 	set_current_index_and_check_median(*main_stack);
 	set_current_index_and_check_median(*target_stack);

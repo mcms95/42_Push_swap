@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   action_swap.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:03:45 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:09:32 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	swap(t_stack **head)
 {
@@ -6,26 +18,16 @@ void	swap(t_stack **head)
 	t_stack	*second_node;
 	t_stack	*third_node;
 
-	if(*head == NULL || (*head)->next == NULL)
-		return;
-	
-	// Setup
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
 	first_node = (*head);
 	second_node = (*head)->next;
 	third_node = (*head)->next->next;
-
-	// Point second node to head
 	*head = second_node;
-
-	// Setup previous first node to be second node
 	first_node->next = third_node;
 	first_node->prev = second_node;
-
-	// Setup previous second node to be first node
 	second_node->next = first_node;
 	second_node->prev = NULL;
-
-	// Check if there is third node
 	if (third_node)
 		third_node->prev = first_node;
 }

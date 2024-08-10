@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setup_b_to_a.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:04:03 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:19:24 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	setup_b_to_a(t_stack *a, t_stack *b)
 {
@@ -7,9 +19,7 @@ void	setup_b_to_a(t_stack *a, t_stack *b)
 	set_target_node_for_b(a, b);
 	set_b_push_cost(a, b);
 	set_b_cheapest_node(b);
-
 }
-
 
 void	set_target_node_for_b(t_stack *a, t_stack *b)
 {
@@ -17,13 +27,13 @@ void	set_target_node_for_b(t_stack *a, t_stack *b)
 	t_stack	*current_a_node;
 	int		index_of_best_match;
 
-	while(b != NULL)
+	while (b != NULL)
 	{
 		index_of_best_match = INT_MAX;
 		current_a_node = a;
-		while(current_a_node != NULL)
+		while (current_a_node != NULL)
 		{
-			if (current_a_node->value < index_of_best_match 
+			if (current_a_node->value < index_of_best_match
 				&& current_a_node->value > b->value)
 			{
 				index_of_best_match = current_a_node->value;
@@ -31,7 +41,7 @@ void	set_target_node_for_b(t_stack *a, t_stack *b)
 			}
 			current_a_node = current_a_node->next;
 		}
-		if ( index_of_best_match == INT_MAX) // No bigger number found
+		if (index_of_best_match == INT_MAX)
 			b->target_node = get_stack_lowest_value_node(a);
 		else
 			b->target_node = target_node;
@@ -49,14 +59,14 @@ void	set_b_push_cost(t_stack *a, t_stack *b)
 	while (b)
 	{
 		b->push_cost = b->index;
-		if (!b->above_median) // If it is under the median 
-			b->push_cost = stack_b_len - b->index; // Counting the number of moves to go to the top going from the end
-		if (b->target_node->above_median) // If target node is above median
+		if (!b->above_median)
+			b->push_cost = stack_b_len - b->index;
+		if (b->target_node->above_median)
 			b->push_cost += b->target_node->index;
 		else
 			b->push_cost += stack_a_len - (b->target_node->index);
 		b = b->next;
-	}	
+	}
 }
 
 void	set_b_cheapest_node(t_stack *b)
@@ -66,8 +76,8 @@ void	set_b_cheapest_node(t_stack *b)
 
 	lowest_cost_to_push = INT_MAX;
 	if (NULL == b)
-		return;
-	while(b)
+		return ;
+	while (b)
 	{
 		if (b->push_cost < lowest_cost_to_push)
 		{

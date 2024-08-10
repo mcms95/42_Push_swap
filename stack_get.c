@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_get.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:04:12 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:20:45 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	get_stack_len(t_stack *stack)
 {
@@ -26,7 +38,7 @@ t_stack	*get_stack_highest_value_node(t_stack *stack)
 	max_value = INT_MIN;
 	while (stack != NULL)
 	{
-		if(stack->value > max_value)
+		if (stack->value > max_value)
 		{
 			max_value = stack->value;
 			highest_node = stack;
@@ -47,7 +59,7 @@ t_stack	*get_stack_lowest_value_node(t_stack *stack)
 	min_value = INT_MAX;
 	while (stack != NULL)
 	{
-		if(stack->value < min_value)
+		if (stack->value < min_value)
 		{
 			min_value = stack->value;
 			lowest_node = stack;
@@ -64,7 +76,7 @@ t_stack	*get_cheapest_node(t_stack *stack)
 	if (stack == NULL)
 		return (NULL);
 	current = stack;
-	while(current != NULL)
+	while (current != NULL)
 	{
 		if (current->is_cheapest_move == true)
 			return (current);

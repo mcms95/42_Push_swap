@@ -1,5 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 14:04:24 by nucardos          #+#    #+#             */
+/*   Updated: 2024/08/10 14:11:49 by nucardos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 void	free_array(char **av)
 {
@@ -24,7 +35,7 @@ void	free_stack(t_stack **stack)
 	if (current->next == NULL)
 	{
 		free(current);
-		return;
+		return ;
 	}
 	while (current)
 	{
