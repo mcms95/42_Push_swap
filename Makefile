@@ -1,8 +1,8 @@
 NAME		= push_swap
 
-SRCS		= push_swap.c	checker.c	free.c	split.c	utils.c	action_swap.c	action_rotate.c \
-action_rotate__reverse.c action_push.c	stack_get.c	sort_3.c	initiate_nodes_for_swap.c \
-sort.c
+SRCS		= main.c	split.c	stack_init.c	checker.c	free.c	utils.c	action_swap.c	action_rotate.c \
+action_rotate_reverse.c action_push.c	stack_get.c	sort_3.c	push_swap.c \
+setup_a_to_b.c	setup_b_to_a.c	move_stacks.c
 
 OBJS		= $(SRCS:.c=.o)
 

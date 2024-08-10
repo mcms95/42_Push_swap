@@ -1,38 +1,17 @@
 # include "push_swap.h"
 
-void	initiate_b_nodes(t_stack *a, t_stack *b)
+void	setup_b_to_a(t_stack *a, t_stack *b)
 {
 	set_current_index_and_check_median(a);
 	set_current_index_and_check_median(b);
-	set_target_node(a, b);
-	set_push_cost(a, b);
-	set_cheapest_node(b);
+	set_target_node_for_b(a, b);
+	set_b_push_cost(a, b);
+	set_b_cheapest_node(b);
 
 }
 
-void	set_current_index_and_check_median(t_stack *stack)
-{
-	int		stack_median_line;
-	int		index;
 
-	if (NULL == stack)
-		return ;
-	index = 1;
-	stack_median_line = get_stack_len(stack) / 2;
-	while (stack != NULL)
-	{
-		stack->index = index;
-		if (index > stack_median_line)
-			stack->above_median = false;
-		else if (index <= stack_median_line)
-			stack->above_median = true;
-		stack = stack->next;
-		index++;
-	}
-}
-
-// The target node is the closest highest node in stack a
-void	set_target_node(t_stack *a, t_stack *b)
+void	set_target_node_for_b(t_stack *a, t_stack *b)
 {
 	t_stack	*target_node;
 	t_stack	*current_a_node;
@@ -47,7 +26,7 @@ void	set_target_node(t_stack *a, t_stack *b)
 			if (current_a_node->value < index_of_best_match 
 				&& current_a_node->value > b->value)
 			{
-				target_node->value = current_a_node->next;
+				index_of_best_match = current_a_node->value;
 				target_node = current_a_node;
 			}
 			current_a_node = current_a_node->next;
@@ -60,7 +39,7 @@ void	set_target_node(t_stack *a, t_stack *b)
 	}
 }
 
-void	set_push_cost(t_stack *a, t_stack *b)
+void	set_b_push_cost(t_stack *a, t_stack *b)
 {
 	int	stack_a_len;
 	int	stack_b_len;
@@ -80,7 +59,7 @@ void	set_push_cost(t_stack *a, t_stack *b)
 	}	
 }
 
-void	set_cheapest_node(t_stack *b)
+void	set_b_cheapest_node(t_stack *b)
 {
 	t_stack	*lowest_cost_to_push_node;
 	int		lowest_cost_to_push;

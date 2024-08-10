@@ -5,33 +5,11 @@ void	setup_a_to_b(t_stack *a, t_stack *b)
 	set_current_index_and_check_median(a);
 	set_current_index_and_check_median(b);
 	set_target_for_a(a, b);
-	set_push_cost(a, b);
-	set_cheapest_node(b);
+	set_a_push_cost(a, b);
+	set_a_cheapest_node(a);
 
 }
 
-void	set_current_index_and_check_median(t_stack *stack)
-{
-	int		stack_median_line;
-	int		index;
-
-	if (NULL == stack)
-		return ;
-	index = 1;
-	stack_median_line = get_stack_len(stack) / 2;
-	while (stack != NULL)
-	{
-		stack->index = index;
-		if (index > stack_median_line)
-			stack->above_median = false;
-		else if (index <= stack_median_line)
-			stack->above_median = true;
-		stack = stack->next;
-		index++;
-	}
-}
-
-// The target node is the closest lowest node in stack a
 void	set_target_for_a(t_stack *a, t_stack *b)
 {
 	t_stack	*target_node;

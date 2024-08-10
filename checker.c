@@ -1,13 +1,11 @@
 # include "push_swap.h"
 
-// Check if is digit -> used check_if_arguments_are_numbers
 int is_digit(char *av)
 {
 	int i;
 	
 	i = 0;
-
-	while(av[i] == ' ' || av[i] == '\t')
+	while (av[i] == ' ' || av[i] == '\t')
 			i++;
 	if (av[i] == '-' || av[i] == '+')
 		i++;

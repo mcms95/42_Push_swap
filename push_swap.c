@@ -1,92 +1,63 @@
 # include "push_swap.h"
 
-// 1 for true, 0 for false
-// exit(1) -> error, exit(0)-> success
-// We can declare many times a function but only definite once -> write code in it
-// Initiate pointers and struct to NULL to prevent SEG_FAULT
-
-void initiate_stack(t_stack **a, char **av, bool ac_is_2_flag)
+void	push_swap(t_stack **a, t_stack **b)
 {
-	printf("Entering initiate_stack\n");
-	long	number;
-	int		i;
+	t_stack	*lowest_node;
+	int	stack_a_len;
 
-	i = 0;
-	while (av[i])
+	stack_a_len = get_stack_len(*a);
+	if (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
+		pb(b, a);
+	if (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
+		pb(b, a);
+	while (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
 	{
-		// Check if number is a digit
-		if (!is_digit(av[i]))
-		{   
-			printf("Error, '%s' is not a valid number!\n", av[i]);
-			free_all(a, av, ac_is_2_flag);
-			return;
-		}
-		// Convert number to long to check range
-		number = ft_atol(av[i]);
-		if (number < INT_MIN || number > INT_MAX)
-		{   
-			printf("Error, number %ld is out of range\n", number);
-			free_all(a, av, ac_is_2_flag);
-			return;
-		}
-		// Check if number is a duplicate
-		if (!check_duplicates(*a, number))
-		{
-			printf("Error, number %ld is a duplicate\n", number);
-			free_all(a, av, ac_is_2_flag);
-			return;
-		}
-		// Append node to tail
-		append_node(a, (int)number);
-		i++;
+		setup_a_to_b(*a, *b);
+		move_a_to_b(a, b);
 	}
-	if ( ac_is_2_flag == true)
+	sort_3(a);
+	while (*b)
 	{
-		free_array(av);
+		setup_b_to_a(*a, *b);
+		move_b_to_a(a, b);
+	}
+	printf("Stack A:\n");
+	print_stack(*a);
+	set_current_index_and_check_median(*a);
+	lowest_node = get_stack_lowest_value_node(*a);
+	put_lowest_node_on_top(a, lowest_node);
+	printf("Stack A:\n");
+	print_stack(*a);
+}
+
+void	set_current_index_and_check_median(t_stack *stack)
+{
+	int		stack_median_line;
+	int		index;
+
+	if (NULL == stack)
+		return ;
+	index = 1;
+	stack_median_line = get_stack_len(stack) / 2;
+	while (stack != NULL)
+	{
+		stack->index = index;
+		if (index > stack_median_line)
+			stack->above_median = false;
+		else if (index <= stack_median_line)
+			stack->above_median = true;
+		stack = stack->next;
+		index++;
 	}
 }
 
-int main(int ac, char **av)
+void	put_lowest_node_on_top(t_stack **a, t_stack *lowest_node)
 {
-	// Check if numbers came in av[1] or in various arguments
-	t_stack	*a;
-	t_stack	*b;
-	a = NULL;
-	b = NULL;
-
-	bool	ac_is_2_flag;
-
-	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (1);
-	else if (ac == 2)
+	while (*a != lowest_node)
 	{
-		av = push_swap_split(av[1], ' ');
-		if (!av)
-			return	1;
-		ac_is_2_flag = true;
+		if (lowest_node->above_median)
+			ra(a);
+		else
+			rra(a);
 	}
-	initiate_stack(&a, av + 1, ac_is_2_flag);
-	printf("Stack created successfully!\n");
-	// Check if stack is sorted
-	if (check_if_stack_is_sorted(a))
-	{
-		ft_printf("Stack is already sorted!\n");
-	}
-	// Stack a
-	ft_printf("\nOriginal stack a ..\n");
-	print_stack(a);
-
-	// Stack b
-	ft_printf("Original stack b ..\n");
-	print_stack(b);
-	if (get_stack_len(a) == 3)
-	{
-		sort_3(&a);
-		ft_printf("Changed stack a ..\n");
-		print_stack(a);
-	}
-
-	printf("\nFreeing stack...\n");
-	free_stack(&a);
-	return (0);
 }

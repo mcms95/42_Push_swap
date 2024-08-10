@@ -57,7 +57,7 @@ t_stack	*get_stack_lowest_value_node(t_stack *stack)
 	return (lowest_node);
 }
 
-t_stack	*get_chepeast_node(t_stack *stack)
+t_stack	*get_cheapest_node(t_stack *stack)
 {
 	t_stack	*current;
 
@@ -70,4 +70,5 @@ t_stack	*get_chepeast_node(t_stack *stack)
 			return (current);
 		current = current->next;
 	}
+	return (NULL);
 }

@@ -36,27 +36,6 @@ void	initialize_node_variables(t_stack *new_node)
 	new_node->prev = NULL;
 }
 
-void	append_node(t_stack **head, int number)
-{
-	t_stack	*new_node;
-	t_stack	*current;
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_node)
-		return;
-	initialize_node_variables(new_node);
-	new_node->value = number;
-	if (*head == NULL)
-		*head = new_node;
-	else
-	{
-		current = *head;
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new_node;
-		new_node->prev = current;
-	}
-}
-
 void	print_stack(t_stack *head)
 {
 	t_stack	*current;
