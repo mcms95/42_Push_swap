@@ -4,23 +4,56 @@ void	push_swap(t_stack **a, t_stack **b)
 {
 	t_stack	*lowest_node;
 	int	stack_a_len;
-
+	int iteration = 1;
 	stack_a_len = get_stack_len(*a);
+	printf("Iteration number: %d\n", iteration++);
+	printf("ORIGINAL-------------------------------------");
+	printf("Stack A:\n");
+	print_stack(*a);
+	printf("Stack B:\n");
+	print_stack(*b);
 	if (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
-		pb(b, a);
+	{	pb(b, a);
+		printf("Iteration number: %d\n", iteration++);
+		printf("Stack A:\n");
+		print_stack(*a);
+		printf("Stack B:\n");
+		print_stack(*b);
+		
+	}
 	if (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
+	{
 		pb(b, a);
+		printf("Iteration number: %d\n", iteration++);
+		printf("Stack A:\n");
+		print_stack(*a);
+		printf("Stack B:\n");
+		print_stack(*b);
+		
+	}
 	while (stack_a_len-- > 3 && !check_if_stack_is_sorted(*a))
 	{
 		setup_a_to_b(*a, *b);
 		move_a_to_b(a, b);
+		printf("Iteration number: %d\n", iteration++);
+		printf("Stack A:\n");
+		print_stack(*a);
+		printf("Stack B:\n");
+		print_stack(*b);
 	}
+	printf("Sorting 3----------------------------:\n");
 	sort_3(a);
 	while (*b)
 	{
 		setup_b_to_a(*a, *b);
 		move_b_to_a(a, b);
+		printf("Iteration number: %d\n", iteration++);
+		printf("Stack A:\n");
+		print_stack(*a);
+		printf("Stack B:\n");
+		print_stack(*b);
 	}
+	printf("------------------------AFTER SWAP------------------------\n");
 	printf("Stack A:\n");
 	print_stack(*a);
 	set_current_index_and_check_median(*a);
@@ -35,9 +68,9 @@ void	set_current_index_and_check_median(t_stack *stack)
 	int		stack_median_line;
 	int		index;
 
-	if (NULL == stack)
+	if (stack == NULL)
 		return ;
-	index = 1;
+	index = 0;
 	stack_median_line = get_stack_len(stack) / 2;
 	while (stack != NULL)
 	{

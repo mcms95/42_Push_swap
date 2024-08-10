@@ -47,9 +47,9 @@ void	set_a_push_cost(t_stack *a, t_stack *b)
 	stack_b_len = get_stack_len(b);
 	while (a)
 	{
-		a->push_cost = b->index;
+		a->push_cost = a->index;
 		if (!(a->above_median)) // If it is under the median 
-			a->push_cost = stack_a_len - a->index; // Counting the number of moves to go to the top going from the end
+			a->push_cost = stack_a_len - (a->index); // Counting the number of moves to go to the top going from the end
 		if (a->target_node->above_median) // If target node is above median
 			a->push_cost += a->target_node->index;
 		else

@@ -23,5 +23,6 @@ int main(int ac, char **av)
 		push_swap(&a, &b);
 	}
 	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }
