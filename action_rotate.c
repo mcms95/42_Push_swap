@@ -44,3 +44,11 @@ void	rr(t_stack **a, t_stack **b)
 	rotate(b);
 	ft_printf("rr\n");
 }
+
+void	rotate_both_stacks(t_stack **main_stack, t_stack **target_stack, t_stack *cheapest_node)
+{
+	while(*target_stack != cheapest_node->target_node && *main_stack != cheapest_node)
+		rr(main_stack, target_stack);
+	set_current_index_and_check_median(*main_stack);
+	set_current_index_and_check_median(*target_stack);
+}

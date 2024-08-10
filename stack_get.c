@@ -56,3 +56,18 @@ t_stack	*get_stack_lowest_value_node(t_stack *stack)
 	}
 	return (lowest_node);
 }
+
+t_stack	*get_chepeast_node(t_stack *stack)
+{
+	t_stack	*current;
+
+	if (stack == NULL)
+		return (NULL);
+	current = stack;
+	while(current != NULL)
+	{
+		if (current->is_cheapest_move == true)
+			return (current);
+		current = current->next;
+	}
+}
