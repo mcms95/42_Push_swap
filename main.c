@@ -6,7 +6,7 @@
 /*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 14:03:51 by nucardos          #+#    #+#             */
-/*   Updated: 2024/08/10 16:01:51 by nucardos         ###   ########.fr       */
+/*   Updated: 2024/08/11 11:35:40 by nucardos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
+	ac_is_2_flag = false;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (0);
 	else if (ac == 2)
@@ -31,14 +32,13 @@ int	main(int ac, char **av)
 	}
 	initiate_stack(&a, av + 1, ac_is_2_flag);
 	if (!(check_if_stack_is_sorted(a)))
-	{	
+	{
 		main_sort(&a, &b);
 	}
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
 }
-
 
 void	main_sort(t_stack **a, t_stack **b)
 {

@@ -2,40 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C Debug (gdb)",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/a.out",
-      "args": [],
-      "stopAtEntry": true,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "miDebuggerPath": "/usr/bin/gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "Skip library files",
-          "text": "skip -gfile ./malloc/*.c",
-          "ignoreFailures": true
-        }
-      ],
-      "preLaunchTask": "gcc build push_swap"
-    },
-    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/nuno/42/push_swap",
-      "program": "/home/nuno/42/push_swap/build/Debug/outDebug",
+      "cwd": "/home/nucardos/push_swap",
+      "program": "/home/nucardos/push_swap/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

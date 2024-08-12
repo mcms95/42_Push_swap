@@ -6,7 +6,7 @@
 /*   By: nucardos <nucardos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 14:03:57 by nucardos          #+#    #+#             */
-/*   Updated: 2024/08/10 15:51:33 by nucardos         ###   ########.fr       */
+/*   Updated: 2024/08/11 11:36:20 by nucardos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,3 @@ void	put_lowest_node_on_top(t_stack **a, t_stack *lowest_node)
 			rra(a);
 	}
 }
-
-
